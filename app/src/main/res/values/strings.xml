@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ProbandoSensores</string>
+
+    <string name="hello_world"></string>
+    <string name="action_settings">Settings</string>
+    <string name="proximidad">Proximidad</string>
+    <string name="aceleracion">Aceleracion</string>
+    <string name="magnetico">Magnetico </string>
+    <string name="orientacion">Orientacion</string>
+    <string name="rotacion">Rotacion</string>
+    <string name="eleccion">Seleccione un sensor</string>
+    <string name="resultados">Resultados</string>
+    <string name="title_activity_ver_sensor">Ver_sensor</string>
+</resources>
