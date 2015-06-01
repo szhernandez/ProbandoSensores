@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Testing sensors</string>
+
+    <string name="hello_world"></string>
+    <string name="action_settings">Settings</string>
+    <string name="proximidad">Proximity</string>
+    <string name="aceleracion">Acceleration</string>
+    <string name="magnetico">Magnetic </string>
+    <string name="orientacion">Orientation</string>
+    <string name="rotacion">Rotation</string>
+    <string name="eleccion">Select a sensor</string>
+    <string name="resultados">Results</string>
+    <string name="title_activity_ver_sensor">See sensors</string>
+
+    <string name="azimuth">Orientation Azimuth: </string>
+    <string name="pitch">Orientation Pitch: </string>
+    <string name="roll">Orientation Roll: </string>
+
+    <string name="Acelerometro_x">Acceleration X: </string>
+    <string name="Acelerometro_y">Acceleration Y: </string>
+    <string name="Acelerometro_z">Acceleration Z: </string>
+
+    <string name="magnetico_x">Axis X: </string>
+    <string name="magnetico_y">Axis Y: </string>
+    <string name="magnetico_z">Axis Z: </string>
+
+    <string name="proximidad_ver">Proximity: </string>
+
+    <string name="rotacion_x">x*sin(?/2): </string>
+    <string name="rotacion_y">y*sin(?/2): </string>
+    <string name="rotacion_z">z*sin(?/2): </string>
+    <string name="rotacion_z2">z*cos(?/2): </string>
+
+</resources>
