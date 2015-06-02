@@ -28,6 +28,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Enlazando XML con JAVA
         salida1 = (TextView) findViewById(R.id.salida1);
         salida2 = (TextView) findViewById(R.id.salida2);
         salida3 = (TextView) findViewById(R.id.salida3);
@@ -81,17 +82,16 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         synchronized (this) {
             switch (event.sensor.getType()) {
                 //OK
+            //Acciones en caso de que haya cambios en el sensor de orientacion
                 case Sensor.TYPE_ORIENTATION:
                     if (RB4.isChecked()) {
-
-
                         string1 = getString(R.string.azimuth) +" "+ event.values[0];
                         string2 = getString(R.string.pitch) +" "+ event.values[1];
                         string3 = getString(R.string.roll) +" "+ event.values[2];
                         mostrar2(string1, string2, string3, "");
                     }
                     break;
-                //OK
+                //Acciones en caso de que haya cambios en el sensor Acelerometro
                 case Sensor.TYPE_ACCELEROMETER:
                     if (RB2.isChecked()) {
                         string1 = getString(R.string.Acelerometro_x) +" "+ event.values[0];
@@ -100,7 +100,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                         mostrar2(string1, string2, string3, "");
                     }
                     break;
-                //NO
+                //Acciones en caso de que haya cambios en el giroscopio. NO ESTA IMPLEMENTADO
                 case Sensor.TYPE_GYROSCOPE:
                   /*  string1= "Eje X: "+event.values[0];
                     string2= "Eje Y: "+event.values[1];
@@ -108,7 +108,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                     mostrar(string1,string2,string3);
                   */
                     break;
-                //OK
+                //Acciones en caso de que haya cambios en el sensor magnetico
                 case Sensor.TYPE_MAGNETIC_FIELD:
                     if (RB3.isChecked()) {
                         string1 = getString(R.string.magnetico_x) +" "+ event.values[0];
@@ -117,16 +117,18 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                         mostrar2(string1, string2, string3, "");
                     }
                     break;
-                //OK
+                ////Acciones en caso de que haya cambios en el sensor de proximidad
                 case Sensor.TYPE_PROXIMITY:
                     if (RB1.isChecked()) {
                         string1 = getString(R.string.proximidad_ver) +" "+ event.values[0];
                         mostrar2(string1, "", "", "");
                     }
                     break;
+                //Acciones en caso de que haya cambios en el sensor de gravedad
                 case Sensor.TYPE_GRAVITY:
                     // log("Gravedad: "+event.values[0]);
                     break;
+                //Acciones en caso de que haya cambios en el sensor de rotacion
                 case Sensor.TYPE_ROTATION_VECTOR:
                     if (RB5.isChecked()) {
                         try {
@@ -153,20 +155,20 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
     }
 
-
+//Metodo que permite mostrar en los string los valores
     private void mostrar(String v1, String v2, String v3) {
         salida1.setText(v1);
         salida2.setText(v2);
         salida3.setText(v3);
     }
-
+    //Metodo que permite mostrar en los string los valores(usando 4 parametros)
     private void mostrar2(String v1, String v2, String v3, String v4) {
         salida1.setText(v1);
         salida2.setText(v2);
         salida3.setText(v3);
         salida4.setText(v4);
     }
-
+    //Metodos para limpiar TextView
     private void limpiar() {
         salida1.setText("");
         salida2.setText("");
@@ -228,6 +230,8 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         }
     }
 
+
+    //Metodo para iniciar el sensor de orientacion
     public void iniciar_orientacion() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
@@ -241,7 +245,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         }
 
     }
-
+    //Metodo para iniciar el acelerometro
     public void iniciar_acelerometro() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
@@ -255,7 +259,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         }
 
     }
-
+    //Metodo para iniciar el giroscopio
     public void iniciar_giroscopio() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
@@ -268,7 +272,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                     SensorManager.SENSOR_DELAY_UI);
         }
     }
-
+    //Metodo para iniciar el sensor magnetico
     public void iniciar_magnetico() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
@@ -282,7 +286,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         }
 
     }
-
+    //Metodo para iniciar el sensor de temperatura
     public void iniciar_temperatura() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_TEMPERATURE);
@@ -293,7 +297,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                     SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
-
+    //Metodo para iniciar el sensor de proximidad
     public void iniciar_proximidad() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
@@ -307,7 +311,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                     SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
-
+    //Metodo para iniciar el sensor de gravedad
     public void iniciar_gravedad() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_GRAVITY);
@@ -320,7 +324,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                     SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
-
+    //Metodo para iniciar el sensor de rotacion
     public void iniciar_rotacion_vector() {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_ROTATION_VECTOR);
@@ -338,38 +342,38 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_ALL);
-
+//DEteniendo sensor de orientacion
         listaSensores = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
         if (!listaSensores.isEmpty()) {
             Sensor orientationSensor = listaSensores.get(0);
             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(orientationSensor.TYPE_ORIENTATION));
         }
-
+//Deteniendo el acelerometro
         if (!listaSensores.isEmpty()) {
             Sensor acelerometerSensor = listaSensores.get(0);
             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(acelerometerSensor.TYPE_ACCELEROMETER));
         }
-
+//Deteniendo giroscopio
         listaSensores = sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
 
         if (!listaSensores.isEmpty()) {
             Sensor giroscopioSensor = listaSensores.get(0);
             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(giroscopioSensor.TYPE_GYROSCOPE));
         }
-
+//Deteniendo sensor magnetico
         listaSensores = sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
 
         if (!listaSensores.isEmpty()) {
             Sensor magneticSensor = listaSensores.get(0);
             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(magneticSensor.TYPE_MAGNETIC_FIELD));
         }
-
+//Deteniendo sensor de temperatura
         listaSensores = sensorManager.getSensorList(Sensor.TYPE_TEMPERATURE);
         if (!listaSensores.isEmpty()) {
             Sensor temperatureSensor = listaSensores.get(0);
             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(temperatureSensor.TYPE_TEMPERATURE));
         }
-
+//Deteneniendo sensor de proximidad
         listaSensores = sensorManager.getSensorList(Sensor.TYPE_PROXIMITY);
         if (!listaSensores.isEmpty()) {
             Sensor proximitySensor = listaSensores.get(0);
@@ -380,7 +384,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
             Sensor orientationSensor = listaSensores.get(0);
             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(orientationSensor.TYPE_GRAVITY));
         }
-
+//Deteniendo sensor de rotacion
         listaSensores = sensorManager.getSensorList(Sensor.TYPE_ROTATION_VECTOR);
         if (!listaSensores.isEmpty()) {
             Sensor rotacionSensor = listaSensores.get(0);

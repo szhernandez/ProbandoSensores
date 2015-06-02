@@ -22,7 +22,7 @@ public class Ver_sensor extends ActionBarActivity {
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_ALL);
-
+//Agregando el nombre de todos los sensores en el movil
         for (Sensor sensor: listaSensores) {
             log(sensor.getName());
         }
